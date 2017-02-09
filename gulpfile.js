@@ -1,11 +1,18 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+var sass = require('gulp-sass');
 var webpack = require('gulp-webpack');
 var ngConfig = require('gulp-ng-config');
 var configVars = require('./config.json');
 var browserSync = require('browser-sync').create();
 var concat = require('gulp-concat');
 
+
+gulp.task('styles', function() {
+    gulp.src(configVars.sassSource)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./public/css/'));
+});
 
 gulp.task('buildCSSBundle', function () {
     return gulp.src(configVars.cssVendors)
@@ -67,7 +74,7 @@ gulp.task('buildTS', function () {
 
 // Build weboack file
 gulp.task('buildWebpack',['buildTS','createConfig'], function () {
-    return gulp.src(configVars.baseOutputDir + 'app.js')
+    return gulp.src([configVars.baseOutputDir + 'config.js', configVars.baseOutputDir + 'app.js'])
         .pipe(webpack({
             output:{
                 filename: 'app-bundle.js'
@@ -76,6 +83,6 @@ gulp.task('buildWebpack',['buildTS','createConfig'], function () {
         .pipe(gulp.dest(configVars.baseOutputDir));
 });
 
-gulp.task('default',['buildVendorBundle','moveTemplates', 'buildCSSBundle']);
+gulp.task('default',['styles', 'buildVendorBundle','moveTemplates', 'buildCSSBundle']);
 
-gulp.task('dev', ['buildVendorBundle','moveTemplates', 'buildCSSBundle','browserSync']);
+gulp.task('dev', ['styles', 'buildVendorBundle','moveTemplates', 'buildCSSBundle','browserSync']);
