@@ -47,6 +47,7 @@ gulp.task('browserSync', ['buildWebpack'], function () {
         port: configVars.browserSyncPort
     });
 
+    gulp.watch(configVars.sassSource, ['styles']).on('change', browserSync.reload);
     gulp.watch(configVars.tsSource,['buildWebpack']).on('change', browserSync.reload);
     gulp.watch(configVars.templateSource,['moveTemplates']).on('change', browserSync.reload);
 });
