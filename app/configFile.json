@@ -1,0 +1,31 @@
+{
+  "appName":"test.app",
+  "version": "0.1",
+  "gitName":"prescience_ex",
+  "tsSource":"app/**/*.ts",
+  "sassSource":"sass/**/*.scss",
+  "baseOutputDir":"public/js/",
+  "baseOutputCSS":"public/css/",
+  "vendors":[
+    "node_modules/angular/angular.min.js",
+    "node_modules/lodash/lodash.js",
+    "node_modules/moment/moment.js"
+  ],
+  "cssVendors":[
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+  ],
+  "local": {
+    "environmentalConfig":{
+      "logDebug": true,
+      "compileDebug":true
+    }
+  },
+  "production": {
+    "environmentalConfig": {
+      "logDebug": false,
+      "compileDebug": false
+    }
+  }
+}
+

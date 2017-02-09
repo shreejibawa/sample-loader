@@ -1,0 +1,38 @@
+{
+  "appName": "routes.app",
+  "version": "0.1",
+  "gitName": "prescience_routes",
+  "browserSyncPort": 4000,
+  "tsSource": "app/**/*.ts",
+  "sassSource": "sass/**/*.scss",
+  "templateSource": "app/**/*.html",
+  "baseOutputDir": "public/js/",
+  "baseOutputCSS": "public/css/",
+  "vendors":[
+    "node_modules/angular/angular.min.js",
+    "node_modules/angular-local-storage/dist/angular-local-storage.min.js",
+    "node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
+    "node_modules/angular-ui-router/release/angular-ui-router.min.js",
+    "node_modules/lodash/lodash.js",
+    "node_modules/moment/moment.js"
+  ],
+  "cssVendors":[
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
+    "node_modules/animate.css/animate.min.css",
+    "node_modules/font-awesome/css/font-awesome.min.css"
+  ],
+  "local": {
+    "environmentalConfig":{
+      "logDebug": true,
+      "compileDebug":true
+    }
+  },
+  "production": {
+    "environmentalConfig": {
+      "logDebug": false,
+      "compileDebug": false
+    }
+  }
+}
+
